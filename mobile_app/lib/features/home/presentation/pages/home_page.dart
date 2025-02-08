@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../product_detail/presentation/pages/scan_result_page.dart';
+import '../../../barcode_scan/presentation/pages/barcode_scan_page.dart';
 import '../../domain/models/recent_scan.dart';
 import '../widgets/recent_scans_list.dart';
 import '../widgets/scan_button.dart';
@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const ScanResultPage(),
+        builder: (context) => const BarcodeScanPage(),
       ),
     );
   }
