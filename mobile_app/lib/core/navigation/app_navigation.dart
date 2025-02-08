@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../../features/home/presentation/pages/home_page.dart';
+import '../../features/scan_history/presentation/pages/scan_history_page.dart';
+import '../../features/settings/presentation/pages/settings_page.dart';
+import '../../features/eco_report/presentation/pages/eco_report_page.dart';
 
 class AppNavigator extends StatefulWidget {
   const AppNavigator({super.key});
@@ -19,8 +21,9 @@ class _AppNavigatorState extends State<AppNavigator> {
         index: _currentIndex,
         children: const [
           HomePage(),
-          Placeholder(), // 履歴画面（後で実装）
-          Placeholder(), // 設定画面（後で実装）
+          ScanHistoryPage(),
+          EcoReportPage(),
+          SettingsPage(),
         ],
       ),
       bottomNavigationBar: NavigationBar(
@@ -30,6 +33,10 @@ class _AppNavigatorState extends State<AppNavigator> {
             _currentIndex = index;
           });
         },
+        backgroundColor: Colors.white,
+        elevation: 3,
+        indicatorColor: const Color(0xFF008080).withOpacity(0.1),
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
         destinations: const [
           NavigationDestination(
             icon: Icon(Icons.home),
@@ -38,6 +45,10 @@ class _AppNavigatorState extends State<AppNavigator> {
           NavigationDestination(
             icon: Icon(Icons.history),
             label: 'History',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.bar_chart),
+            label: 'Reports',
           ),
           NavigationDestination(
             icon: Icon(Icons.settings),

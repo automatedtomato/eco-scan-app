@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 
+import '../../../product_detail/presentation/pages/scan_result_page.dart';
 import '../../domain/models/recent_scan.dart';
 import '../widgets/recent_scans_list.dart';
 import '../widgets/scan_button.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   // Creating sample data
   List<RecentScan> _getRecentScans() {
     return [
@@ -24,8 +30,13 @@ class HomePage extends StatelessWidget {
   }
 
   void _onScanPressed() {
-    // TODO: Implement scan functionality
     debugPrint('Scan button pressed');
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const ScanResultPage(),
+      ),
+    );
   }
 
   @override
@@ -57,7 +68,7 @@ class HomePage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 RecentScansList(recentScans: recentScans),
               ],
             ),
