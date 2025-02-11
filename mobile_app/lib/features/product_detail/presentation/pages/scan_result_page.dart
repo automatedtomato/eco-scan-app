@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../product_compare/presentation/pages/product_compare_page.dart';
+import '../../../product_comparison/domain/models/comparison_product.dart';
+import '../../../product_comparison/domain/models/dummy_data.dart';
+import '../../../product_comparison/presentation/pages/product_compare_page.dart';
 
 class ScanResultPage extends StatefulWidget {
-  const ScanResultPage({super.key});
+  final ComparisonProduct scannedProduct; // 追加
+
+  const ScanResultPage({
+    super.key,
+    required this.scannedProduct,
+  });
 
   @override
   State<ScanResultPage> createState() => _ScanResultPageState();
@@ -219,7 +226,10 @@ class _ScanResultPageState extends State<ScanResultPage> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const ProductComparePage(),
+              builder: (context) => ProductComparePage(
+                productA: widget.scannedProduct,
+                productB: DummyProducts.productB,
+              ), // テスト用),
             ),
           );
         },

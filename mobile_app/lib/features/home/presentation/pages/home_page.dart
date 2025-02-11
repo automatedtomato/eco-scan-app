@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
+import 'package:mobile_app/features/product_comparison/domain/models/dummy_data.dart';
+import 'package:mobile_app/features/product_comparison/presentation/pages/product_compare_page.dart';
 import '../../../barcode_scan/presentation/pages/barcode_scan_page.dart';
 import '../../domain/models/recent_scan.dart';
 import '../widgets/recent_scans_list.dart';
 import '../widgets/scan_button.dart';
+import '../../../product_comparison/domain/models/dummy_data.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -46,6 +48,22 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Epsilon'),
         centerTitle: true,
+        actions: [
+          // テスト用の比較画面遷移ボタン
+          IconButton(
+            icon: const Icon(Icons.compare_arrows),
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProductComparePage(
+                    productA: DummyProducts.productA,
+                    productB: DummyProducts.productB,
+                  ),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
